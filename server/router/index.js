@@ -3,7 +3,7 @@ const { Movie, Category } = require('../models/');
 module.exports = function (app) {
 
   app.get('/' , (req, res) => {
-    res.send('Hello World!');
+    return res.send('Hello World!');
   });
 
   app.post('/movies', async (req, res) => {
@@ -12,7 +12,7 @@ module.exports = function (app) {
       return res.status(201).send(movie);
     } catch (err) {
       console.log(err);
-      res.status(400).send('error');
+      return res.status(500).send('error');
     }
   });
 
@@ -22,7 +22,7 @@ module.exports = function (app) {
       return res.status(201).send(category);
     } catch (err) {
       console.log(err);
-      res.status(400).send('error');
+      return res.status(500).send('error');
     }
   });
 
